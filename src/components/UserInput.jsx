@@ -6,7 +6,7 @@ function UserInput() {
         event.preventDefault();
         event.value = "";
         console.log('search submitted! ' + inputValue);
-        // sendApiRequest(inputValue);
+        // sendApiRequest(inputValue); create API request function
         setInputValue("");
     };
 
