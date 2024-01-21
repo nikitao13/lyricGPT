@@ -2,6 +2,11 @@ import {useState} from "react";
 
 function UserInput({ setQuery, setResponse }) {
     const [inputValue, setInputValue] = useState("");
+
+    const sendApiRequest = (userQuery) => {
+
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         event.value = "";
