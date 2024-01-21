@@ -1,7 +1,7 @@
 function ChatHeader() {
     return (
         <div className="chatHeader">
-            <p>search for a song lyric with the power of ai!</p>
+            <p>search for a song lyric with the power of AI!</p>
         </div>
     )
 }

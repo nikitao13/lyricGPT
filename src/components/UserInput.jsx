@@ -9,8 +9,12 @@ function UserInput({ setQuery, setResponse }) {
         event.value = "";
         console.log('search submitted! ' + inputValue);
         setQuery(inputValue);
-        const apiResponse = await sendApiRequest(inputValue);
-        setResponse(apiResponse);
+        try {
+            const data = await sendApiRequest(inputValue);
+            setResponse(data);
+        } catch (error) {
+            console.error(error)
+        }
         setInputValue("");
     };
 
