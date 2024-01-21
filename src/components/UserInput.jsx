@@ -1,12 +1,14 @@
 import {useState} from "react";
 
-function UserInput() {
+function UserInput({ setQuery, setResponse }) {
     const [inputValue, setInputValue] = useState("");
     const handleSubmit = async (event) => {
         event.preventDefault();
         event.value = "";
         console.log('search submitted! ' + inputValue);
-        // sendApiRequest(inputValue); create API request function
+        setQuery(inputValue);
+        // const response = sendApiRequest(inputValue); create API request function
+        // setResponse(response); set state as response value
         setInputValue("");
     };
 
@@ -27,7 +29,10 @@ function UserInput() {
                     value={inputValue}
                     onChange={handleChange}
                     autoComplete="off"
-                    id="userInputField"/>
+                    id="userInputField"
+                    maxLength={85}
+                    required
+                />
             </form>
         </div>
     )
