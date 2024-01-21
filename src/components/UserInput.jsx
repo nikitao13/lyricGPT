@@ -1,19 +1,16 @@
 import {useState} from "react";
+import sendApiRequest from "../helpers/sendApiRequest.js";
 
 function UserInput({ setQuery, setResponse }) {
     const [inputValue, setInputValue] = useState("");
-
-    const sendApiRequest = (userQuery) => {
-
-    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         event.value = "";
         console.log('search submitted! ' + inputValue);
         setQuery(inputValue);
-        // const response = sendApiRequest(inputValue); create API request function
-        // setResponse(response); set state as response value
+        const apiResponse = await sendApiRequest(inputValue);
+        setResponse(apiResponse);
         setInputValue("");
     };
 
