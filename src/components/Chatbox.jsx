@@ -4,14 +4,17 @@ import UserInput from "./UserInput.jsx";
 import {useState} from "react";
 
 function Chatbox() {
-    const [query, setQuery] = useState("");
-    const [response, setResponse] = useState("");
+    const [messages, setMessages] = useState([]);
+
+    const addMessage = (message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+    }
 
     return (
         <div className="chatbox">
             <ChatHeader />
-            <GptOutput query={query} response={response}/>
-            <UserInput setQuery={setQuery} setResponse={setResponse}/>
+            <GptOutput messages={messages}/>
+            <UserInput addMessage={addMessage}/>
         </div>
     )
 }

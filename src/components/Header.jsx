@@ -1,7 +1,7 @@
 function Header() {
     return (
         <div className="header">
-            <h1>lyricGPT</h1>
+            <h1>translateGPT</h1>
         </div>
     )
 }

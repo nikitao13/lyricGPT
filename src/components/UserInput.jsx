@@ -1,21 +1,21 @@
 import {useState} from "react";
 import sendApiRequest from "../helpers/sendApiRequest.js";
 
-function UserInput({ setQuery, setResponse }) {
+function UserInput({ addMessage }) {
     const [inputValue, setInputValue] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         event.value = "";
+        setInputValue("");
         console.log('search submitted! ' + inputValue);
-        setQuery(inputValue);
+        addMessage({ content: inputValue, type: "query" });
         try {
             const data = await sendApiRequest(inputValue);
-            setResponse(data);
+            addMessage({ content: data, type: "response" });
         } catch (error) {
             console.error(error)
         }
-        setInputValue("");
     };
 
     const handleChange = (event) => {
@@ -31,12 +31,12 @@ function UserInput({ setQuery, setResponse }) {
                 <input
                     type="text"
                     name="userSearch"
-                    placeholder="enter a song lyric..."
+                    placeholder="enter text to translate..."
                     value={inputValue}
                     onChange={handleChange}
                     autoComplete="off"
                     id="userInputField"
-                    maxLength={85}
+                    maxLength={300}
                     required
                 />
             </form>
